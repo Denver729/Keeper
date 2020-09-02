@@ -13,6 +13,10 @@ public class OrdersList {
 
     }
 
+    public static int getNumb(){
+        return orders.size();
+    }
+
 
 
 }

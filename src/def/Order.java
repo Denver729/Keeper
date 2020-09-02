@@ -1,5 +1,7 @@
 package def;
 import java.util.ArrayList;
+import java.util.Date;
+
 import com.google.gson.*;
 
 
@@ -8,21 +10,48 @@ public class Order {
     private static ArrayList<Product> sandwiches = new ArrayList<Product>();
     private static ArrayList<Product> starters = new ArrayList<Product>();
     private static int total;
-    private static int time;
+    private static double time;
     private static int number;
 
 
 
-
+    // overloaded method for adding products of different types with a type parameter "Product"
     public static void addPosit(Drink drnk){
+        if(drinks.isEmpty()&sandwiches.isEmpty()&starters.isEmpty()){
+            initOrd();
+        }
        drinks.add(drnk);
+        total += drnk.getPrise();
     }
+
+    //.................................................
+
     public static void addPosit(Starter starter){
+        if(drinks.isEmpty()&sandwiches.isEmpty()&starters.isEmpty()){
+            initOrd();
+        }
         starters.add(starter);
+        total += starter.getPrise();
     }
+
+    //.................................................
+
     public static void addPosit(Sandwich sandwich){
+        if(drinks.isEmpty()&sandwiches.isEmpty()&starters.isEmpty()){
+            initOrd();
+        }
         sandwiches.add(sandwich);
+        total += sandwich.getPrise();
     }
+
+    //get Order Number from OrdersList.....
+
+    private static void initOrd(){
+        Date date = new Date();
+        number = OrdersList.getNumb();
+        time = date.getTime();
+    }
+
 
 
 
